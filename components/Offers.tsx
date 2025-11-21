@@ -23,6 +23,20 @@ const OFFERS = [
 ];
 
 const Offers: React.FC = () => {
+  const handleScrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('contact');
+    if (element) {
+      const navHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navHeight;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id="offers" className="py-24 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,9 +60,13 @@ const Offers: React.FC = () => {
               </div>
               <h3 className="text-3xl font-serif text-white mb-4">{offer.title}</h3>
               <p className="text-coffee-100 leading-relaxed">{offer.description}</p>
-              <button className="mt-8 px-6 py-2 border border-white/30 text-white hover:bg-white hover:text-black transition-all rounded text-sm uppercase tracking-widest">
+              <a 
+                href="#contact"
+                onClick={handleScrollToContact}
+                className="mt-8 px-6 py-2 border border-white/30 text-white hover:bg-white hover:text-black transition-all rounded text-sm uppercase tracking-widest inline-block"
+              >
                 Claim Offer
-              </button>
+              </a>
               
               {/* Background decorative circle */}
               <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-2xl group-hover:bg-coffee-500/20 transition-colors duration-500"></div>

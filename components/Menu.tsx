@@ -20,24 +20,24 @@ const Menu: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-card p-4 rounded-xl flex gap-4 hover:bg-white/5 transition-colors group cursor-pointer"
+              className="glass-card p-4 rounded-xl flex gap-4 hover:bg-white/10 hover:border-coffee-500/30 transition-all duration-300 group cursor-pointer"
             >
               <div className="w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
                 <img
                   src={item.image}
                   alt={item.name}
                   loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
               </div>
               <div className="flex-grow flex flex-col justify-between">
                 <div className="flex justify-between items-start">
-                  <h3 className="text-xl font-serif text-white group-hover:text-coffee-400 transition-colors">{item.name}</h3>
+                  <h3 className="text-xl font-serif text-white group-hover:text-coffee-400 transition-colors duration-300">{item.name}</h3>
                   <span className="text-lg font-bold text-coffee-500">{item.price}</span>
                 </div>
                 <p className="text-sm text-gray-400 line-clamp-2">{item.description}</p>
                 <div className="flex justify-end mt-2">
-                   <button className="text-xs uppercase tracking-wider text-white flex items-center gap-1 hover:text-coffee-400">
+                   <button className="text-xs uppercase tracking-wider text-white flex items-center gap-1 hover:text-coffee-400 transition-colors">
                      Add to Order <Plus size={14} />
                    </button>
                 </div>

@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-coffee-100 hover:text-coffee-500 px-3 py-2 text-sm uppercase tracking-widest font-light transition-colors cursor-pointer"
+                className="text-coffee-100 hover:text-coffee-500 px-3 py-2 text-sm uppercase tracking-widest font-bold transition-colors cursor-pointer"
               >
                 {link.name}
               </a>
@@ -80,7 +80,7 @@ const Navbar: React.FC = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-coffee-100 hover:text-coffee-500 px-3 py-2 text-sm uppercase tracking-widest font-light transition-colors cursor-pointer"
+                className="text-coffee-100 hover:text-coffee-500 px-3 py-2 text-sm uppercase tracking-widest font-bold transition-colors cursor-pointer"
               >
                 {link.name}
               </a>
@@ -115,7 +115,7 @@ const Navbar: React.FC = () => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-coffee-100 hover:text-coffee-500 block px-3 py-4 text-lg uppercase tracking-widest font-light cursor-pointer"
+                  className="text-coffee-100 hover:text-coffee-500 block px-3 py-4 text-lg uppercase tracking-widest font-bold cursor-pointer"
                 >
                   {link.name}
                 </a>

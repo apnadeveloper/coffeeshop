@@ -13,6 +13,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/ui/BackToTop';
+import WhatsAppButton from './components/ui/WhatsAppButton';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
 
       {/* Utilities */}
       <BackToTop />
+      <WhatsAppButton />
     </main>
   );
 }

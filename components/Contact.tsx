@@ -1,8 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const { name, email, subject, message } = formData;
+    
+    const recipient = 'info@apnadeveloper.com';
+    const mailtoSubject = subject ? encodeURIComponent(subject) : encodeURIComponent('Contact Form Submission from Velvet Bean Website');
+    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+    const mailtoBody = encodeURIComponent(body);
+
+    window.location.href = `mailto:${recipient}?subject=${mailtoSubject}&body=${mailtoBody}`;
+  };
+
   return (
     <section id="contact" className="py-24 relative z-10 bg-black/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,30 +76,46 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <input 
-                  type="text" 
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="Name" 
+                  required
                   className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-coffee-500 transition-colors"
                 />
                 <input 
-                  type="email" 
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Email" 
+                  required
                   className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-coffee-500 transition-colors"
                 />
               </div>
               <input 
-                  type="text" 
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   placeholder="Subject" 
+                  required
                   className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-coffee-500 transition-colors"
                 />
               <textarea 
-                rows={4} 
+                name="message"
+                rows={4}
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Message" 
+                required
                 className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-coffee-500 transition-colors"
               ></textarea>
-              <button className="w-full bg-coffee-500 text-white py-3 rounded-lg font-bold tracking-wide hover:bg-coffee-400 transition-colors">
+              <button type="submit" className="w-full bg-coffee-500 text-white py-3 rounded-lg font-bold tracking-wide hover:bg-coffee-400 transition-colors">
                 SEND MESSAGE
               </button>
             </form>
